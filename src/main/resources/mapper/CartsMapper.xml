@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shh.mapper.CartsMapper">
+  <resultMap id="BaseResultMap" type="com.shh.entity.Carts">
+    <!--@mbg.generated-->
+    <!--@Table carts-->
+    <id column="cart_id" jdbcType="INTEGER" property="cartId" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="product_pic" jdbcType="VARCHAR" property="productPic" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_attr" jdbcType="VARCHAR" property="productAttr" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    cart_id, member_id, quantity, price, product_pic, product_name, product_attr, `status`, 
+    create_date, update_date
+  </sql>
+  <update id="updateById">
+    update carts
+    set quantity=#{count}
+    where cart_id=#{cartId}
+  </update>
+  <insert id="insert">
+    insert into carts(cart_id,member_id,quantity,price,product_name)
+    values (#{carts.cartId},#{carts.memberId},#{carts.quantity},#{carts.price},#{carts.productName})
+  </insert>
+  <select id="selectByMidAndPid" resultMap="BaseResultMap">
+    select *
+    from carts
+    where member_id=#{mid}
+    and pid=#{pid}
+
+  </select>
+</mapper>

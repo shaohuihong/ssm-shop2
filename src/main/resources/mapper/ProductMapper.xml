@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shh.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.shh.entity.Product">
+    <!--@mbg.generated-->
+    <!--@Table product-->
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sub_title" jdbcType="VARCHAR" property="subTitle" />
+    <result column="orignal_price" jdbcType="DECIMAL" property="orignalPrice" />
+    <result column="promote_price" jdbcType="DECIMAL" property="promotePrice" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    pid, `name`, sub_title, orignal_price, promote_price, stock, cid, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from product
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="pid" keyProperty="pid" parameterType="com.shh.entity.Product" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product (`name`, sub_title, orignal_price, 
+      promote_price, stock, cid, 
+      create_date)
+    values (#{name,jdbcType=VARCHAR}, #{subTitle,jdbcType=VARCHAR}, #{orignalPrice,jdbcType=DECIMAL}, 
+      #{promotePrice,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="pid" keyProperty="pid" parameterType="com.shh.entity.Product" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="subTitle != null">
+        sub_title,
+      </if>
+      <if test="orignalPrice != null">
+        orignal_price,
+      </if>
+      <if test="promotePrice != null">
+        promote_price,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null">
+        #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="orignalPrice != null">
+        #{orignalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotePrice != null">
+        #{promotePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shh.entity.Product">
+    <!--@mbg.generated-->
+    update product
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null">
+        sub_title = #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="orignalPrice != null">
+        orignal_price = #{orignalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotePrice != null">
+        promote_price = #{promotePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shh.entity.Product">
+    <!--@mbg.generated-->
+    update product
+    set `name` = #{name,jdbcType=VARCHAR},
+      sub_title = #{subTitle,jdbcType=VARCHAR},
+      orignal_price = #{orignalPrice,jdbcType=DECIMAL},
+      promote_price = #{promotePrice,jdbcType=DECIMAL},
+      stock = #{stock,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>
